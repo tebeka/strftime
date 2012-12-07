@@ -78,7 +78,8 @@ func repl(match string, t time.Time) string {
 	return t.Format(format)
 }
 
-// Format return strings with % directives are expand
+// Format return string with % directives expanded.
+// Will return error on unknown directive.
 func Format(format string, t time.Time) (result string, err error) {
 	defer func() {
 		if e := recover(); e != nil {
