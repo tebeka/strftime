@@ -18,6 +18,7 @@ Directives:
 	%M - Minute as a decimal number [00,59]
 	%p - Locale’s equivalent of either AM or PM
 	%S - Second as a decimal number [00,61]
+	%w - Weekday as a decimal number
 	%x - Locale’s appropriate date representation
 	%X - Locale’s appropriate time representation
 	%y - Year without century as a decimal number [00,99]
@@ -27,7 +28,6 @@ Directives:
 
 Missing directives:
 	%U - Week number of the year
-	%w - Weekday as a decimal number
 	%W - Week number of the year
 */
 package strftime
@@ -36,6 +36,10 @@ import (
 	"fmt"
 	"regexp"
 	"time"
+)
+
+const (
+	Version = "0.1.1"
 )
 
 // See http://docs.python.org/2/library/time.html#time.strftime
@@ -81,6 +85,8 @@ func repl(match string, t time.Time) string {
 		start := time.Date(t.Year(), 1, 1, 0, 0, 0, 0, time.UTC)
 		day := int(t.Sub(start).Hours()/24) + 1
 		return fmt.Sprintf("%03d", day)
+	case "%w":
+		return fmt.Sprintf("%d", t.Weekday())
 	}
 
 	panic(fmt.Errorf("unknown directive - %s", match))

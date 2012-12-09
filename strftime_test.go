@@ -35,3 +35,15 @@ func TestDayOfYear(t *testing.T) {
 		t.Fatalf("day of year != 314 (got %s)", s)
 	}
 }
+
+
+func TestWeekday(t *testing.T) {
+	s , err := Format("%w", testTime)
+	if err != nil {
+		t.Fatalf("error expanding %w", err)
+	}
+
+	if s != "2" {
+		t.Fatalf("day of week != 2 (got %s)", s)
+	}
+}
