@@ -26,7 +26,7 @@ func TestUnknown(t *testing.T) {
 }
 
 func TestDayOfYear(t *testing.T) {
-	s , err := Format("%j", testTime)
+	s, err := Format("%j", testTime)
 	if err != nil {
 		t.Fatalf("error expanding %j", err)
 	}
@@ -36,9 +36,8 @@ func TestDayOfYear(t *testing.T) {
 	}
 }
 
-
 func TestWeekday(t *testing.T) {
-	s , err := Format("%w", testTime)
+	s, err := Format("%w", testTime)
 	if err != nil {
 		t.Fatalf("error expanding %w", err)
 	}
@@ -46,4 +45,20 @@ func TestWeekday(t *testing.T) {
 	if s != "2" {
 		t.Fatalf("day of week != 2 (got %s)", s)
 	}
+}
+
+func checkWeek(format string, t *testing.T) {
+	s, err := Format(format, testTime)
+	if err != nil {
+		t.Fatalf("error expanding %s - %s", format, err)
+	}
+
+	if s != "45" {
+		t.Fatalf("[%s] week num != 45 (got %s)", format, s)
+	}
+}
+
+func TestWeekNum(t *testing.T) {
+	checkWeek("%W", t)
+	checkWeek("%U", t)
 }

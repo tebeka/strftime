@@ -18,17 +18,14 @@ Directives:
 	%M - Minute as a decimal number [00,59]
 	%p - Locale’s equivalent of either AM or PM
 	%S - Second as a decimal number [00,61]
+	%U - Week number of the year
 	%w - Weekday as a decimal number
+	%W - Week number of the year
 	%x - Locale’s appropriate date representation
 	%X - Locale’s appropriate time representation
 	%y - Year without century as a decimal number [00,99]
 	%Y - Year with century as a decimal number
 	%Z - Time zone name (no characters if no time zone exists)
-
-
-Missing directives:
-	%U - Week number of the year
-	%W - Week number of the year
 */
 package strftime
 
@@ -40,6 +37,8 @@ import (
 
 const (
 	Version = "0.1.1"
+
+	WEEK = time.Hour * 24 * 7
 )
 
 // See http://docs.python.org/2/library/time.html#time.strftime
@@ -82,11 +81,20 @@ func repl(match string, t time.Time) string {
 
 	switch match {
 	case "%j":
-		start := time.Date(t.Year(), 1, 1, 0, 0, 0, 0, time.UTC)
+		start := time.Date(t.Year(), time.January, 1, 0, 0, 0, 0, time.UTC)
 		day := int(t.Sub(start).Hours()/24) + 1
 		return fmt.Sprintf("%03d", day)
 	case "%w":
 		return fmt.Sprintf("%d", t.Weekday())
+	case "%W", "%U":
+		start := time.Date(t.Year(), time.January, 1, 23, 0, 0, 0, time.UTC)
+		week := 0
+		for start.Before(t) {
+			week += 1
+			start = start.Add(WEEK)
+		}
+
+		return fmt.Sprintf("%02d", week)
 	}
 
 	panic(fmt.Errorf("unknown directive - %s", match))

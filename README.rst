@@ -24,15 +24,6 @@ Example
     str, err := strftime.Format("%Y/%m/%d", time.Now())
 
 
-Bugs
-====
-The following directive are not supported
-::
-
-    %U - Week number of the year
-    %W - Week number of the year
-
-
 Contact
 =======
 https://bitbucket.org/tebeka/strftime
