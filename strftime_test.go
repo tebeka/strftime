@@ -24,3 +24,14 @@ func TestUnknown(t *testing.T) {
 		t.Fatalf("managed to expand %g")
 	}
 }
+
+func TestDayOfYear(t *testing.T) {
+	s , err := Format("%j", testTime)
+	if err != nil {
+		t.Fatalf("error expanding %j", err)
+	}
+
+	if s != "314" {
+		t.Fatalf("day of year != 314 (got %s)", s)
+	}
+}

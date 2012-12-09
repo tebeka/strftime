@@ -13,6 +13,7 @@ Directives:
 	%d - Day of the month as a decimal number [01,31]
 	%H - Hour (24-hour clock) as a decimal number [00,23]
 	%I - Hour (12-hour clock) as a decimal number [01,12]
+	%j - Day of year	
 	%m - Month as a decimal number [01,12]
 	%M - Minute as a decimal number [00,59]
 	%p - Locale’s equivalent of either AM or PM
@@ -25,7 +26,6 @@ Directives:
 
 
 Missing directives:
-	%j - Day of year	
 	%U - Week number of the year
 	%w - Weekday as a decimal number
 	%W - Week number of the year
@@ -72,10 +72,19 @@ func repl(match string, t time.Time) string {
 	}
 
 	format, ok := conv[match]
-	if !ok {
-		panic(fmt.Errorf("unknown directive - %s", match))
+	if ok {
+		return t.Format(format)
 	}
-	return t.Format(format)
+
+	switch match {
+	case "%j":
+		start := time.Date(t.Year(), 1, 1, 0, 0, 0, 0, time.UTC)
+		day := int(t.Sub(start).Hours()/24) + 1
+		return fmt.Sprintf("%03d", day)
+	}
+
+	panic(fmt.Errorf("unknown directive - %s", match))
+	return "" // Make compiler happy
 }
 
 // Format return string with % directives expanded.
