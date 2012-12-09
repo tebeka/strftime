@@ -29,9 +29,7 @@ Bugs
 The following directive are not supported
 ::
 
-    %j - Day of year	
     %U - Week number of the year
-    %w - Weekday as a decimal number
     %W - Week number of the year
 
 
