@@ -56,6 +56,6 @@ func TestFormats(t *testing.T) {
 func TestUnknown(t *testing.T) {
 	_, err := Format("%g", testTime)
 	if err == nil {
-		t.Fatalf("managed to expand %g")
+		t.Fatal("managed to expand 'g'")
 	}
 }
