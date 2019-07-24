@@ -6,7 +6,6 @@ A: Yes, but it becomes tricky to use if if you have string with things other
 than time in them. (like `/path/to/%Y/%m/%d/report`)
 
 
-
 # Installing
 
     go get github.com/tebeka/strftime
