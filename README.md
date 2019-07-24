@@ -1,4 +1,6 @@
-# [strftime](http://strftime.org/) For Go
+# [strftime](http://strftime.org/) for Go
+
+[![Build Status](https://travis-ci.org/tebeka/strftime.svg?branch=master)](https://travis-ci.org/tebeka/strftime)
 
 Q: Why, we already have [time.Format](https://golang.org/pkg/time/#Time.Format)?
 
