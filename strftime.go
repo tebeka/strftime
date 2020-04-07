@@ -66,11 +66,9 @@ var conv = map[string]string{
 	"%Z": "MST",        // Time zone name (no characters if no time zone exists)
 }
 
-var fmtRe *regexp.Regexp
-
-func init() {
+var (
 	fmtRe = regexp.MustCompile("%[%a-zA-Z]")
-}
+)
 
 // repl replaces % directives with right time, will panic on unknown directive
 func repl(match string, t time.Time) (string, error) {

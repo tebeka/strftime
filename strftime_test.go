@@ -2,6 +2,7 @@ package strftime
 
 import (
 	"testing"
+	"testing/quick"
 	"time"
 )
 
@@ -62,5 +63,16 @@ func TestUnknown(t *testing.T) {
 	_, err := Format("%g", testTime)
 	if err == nil {
 		t.Fatal("managed to expand 'g'")
+	}
+}
+
+func TestQuick(t *testing.T) {
+	fn := func(text string) bool {
+		s, _ := Format(text, testTime)
+		// TODO: Find better heuristic
+		return len(s) >= len(text)
+	}
+	if err := quick.Check(fn, nil); err != nil {
+		t.Fatal(err)
 	}
 }
