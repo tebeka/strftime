@@ -39,7 +39,7 @@ import (
 
 const (
 	// Version is the package version
-	Version = "0.1.3"
+	Version = "0.1.4"
 
 	// Week in time.Duration
 	Week = time.Hour * 24 * 7
