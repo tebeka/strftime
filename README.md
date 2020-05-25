@@ -1,6 +1,6 @@
 # [strftime](http://strftime.org/) for Go
 
-[![Build Status](https://travis-ci.org/tebeka/strftime.svg?branch=master)](https://travis-ci.org/tebeka/strftime)
+[![Test](https://github.com/tebeka/strftime/workflows/Test/badge.svg)](https://github.com/tebeka/strftime/actions?query=workflow%3ATest)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![go.dev reference](https://img.shields.io/badge/go.dev-reference-007d9c?logo=go&logoColor=white&style=flat-square)](https://pkg.go.dev/github.com/tebeka/strftime)
 
