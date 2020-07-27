@@ -54,7 +54,7 @@ var conv = map[string]string{
 	"%c": time.RFC1123, // Locale’s appropriate date and time representation
 	"%d": "02",         // Day of the month as a decimal number [01,31]
 	"%H": "15",         // Hour (24-hour clock) as a decimal number [00,23]
-	"%I": "3",          // Hour (12-hour clock) as a decimal number [01,12]
+	"%I": "03",         // Hour (12-hour clock) as a decimal number [01,12]
 	"%m": "01",         // Month as a decimal number [01,12]
 	"%M": "04",         // Minute as a decimal number [00,59]
 	"%p": "PM",         // Locale’s equivalent of either AM or PM

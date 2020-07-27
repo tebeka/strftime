@@ -76,3 +76,14 @@ func TestQuick(t *testing.T) {
 		t.Fatal(err)
 	}
 }
+
+func TestPadI(t *testing.T) {
+	ts := time.Date(2020, 07, 27, 9, 8, 7, 0, time.UTC)
+	out, err := Format("%I:%M:%S %p", ts)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if "09:08:07 AM" != out {
+		t.Fatal(out)
+	}
+}
