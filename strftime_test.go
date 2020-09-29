@@ -6,10 +6,6 @@ import (
 	"time"
 )
 
-type TestCase struct {
-	format, value string
-}
-
 var testTime = time.Date(2009, time.November, 10, 23, 1, 2, 3, time.UTC)
 var testCases = []struct {
 	format string
